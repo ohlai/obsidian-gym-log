@@ -26,5 +26,6 @@
     "editor:toggle-keyboard",
     "editor:configure-toolbar",
     "app:open-vault"
-  ]
+  ],
+  "propertiesInDocument": "hidden"
 }

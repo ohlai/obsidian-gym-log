@@ -70,7 +70,7 @@ class workout
 				return a.index - b.index;
 		});
 
-		// Create new array with template exercices that contains last performed duration
+		// Create new array with template exercises that contains last performed duration
 		var templateExercies = [];
 		for(var e of remainingExercises)
 		{
@@ -93,10 +93,10 @@ class workout
 			if(lastPerformed == null)
 				lastPerformed = {};
 
-			templateExercies.push(['[[' + e.file.path + '|' + e['exercise'] + ']]', e["muscle_group"], lastPerformed["weight"], lastPerformed["effort"]]);
+			templateExercies.push(['[[' + e.file.path + '|' + e['exercise'] + ']]', e["muscle_group"], lastPerformed["weight"], lastPerformed["reps"]]);
 		}
 
-		n.dv.table(["Exercice", "💪🏻-group", "🏋🏼", "😥"], templateExercies);
+		n.dv.table(["Exercise", "Group", "Weight", "Reps"], templateExercies);
 		    //.sort( e=> e['muscle_group'], 'desc'));
 	}
 
@@ -119,13 +119,12 @@ class workout
 			if(exerciseId != workoutId)
 				continue;
 
-			// Set prevTimeStamp and FirstTimeStamp if this is the first exercise
+			// Set prevTimeStamp and firstTimeStamp if this is the first exercise
 			if(i==0)
 			{
 				prevTimeStamp = moment(new Date(e['date']));
 				firstTimeStamp = prevTimeStamp;
 			}
-
 
 			var timeStamp = moment(new Date(e['date']));
 			// Save last time stamp, we don't know how many exercises we have...
@@ -138,12 +137,34 @@ class workout
 			if(i==0)
 				timeDiff = timeStamp.format("HH:mm");
 
-			performedExercises.push(['[[' + e.file.path + '|' + e['exercise'] + ']]', e["weight"], timeDiff, e['note']]);
+			// for workout start weight and reps are empty
+			let weight = e["weight"];
+			let reps = e["reps"];
+			let weightReps;
+			if (weight === undefined && reps === undefined){
+				weightReps = weight;
+			}
+			else if (weight === null) {
+				weightReps = `? x ${reps}`;
+			}
+			else if (reps === null) {
+				weightReps = `${weight} x ?`;
+			}
+			else {
+				weightReps = `${weight} x ${reps}`;
+			}
+
+			performedExercises.push([
+				`[[${e.file.path}|${e['exercise']}]]`, 
+				weightReps, 
+				timeDiff, 
+				e['note']
+			]);
 			prevTimeStamp = timeStamp;
 			i++;
 		}
 
-		n.dv.table(["Exercice", "🏋🏼", "⏱", "🗒"], performedExercises);
+		n.dv.table(["Exercise", "Weight x Reps", "Time", "Notes"], performedExercises);
 
 		if(lastTimeStamp != null && firstTimeStamp != null)
 		{
@@ -158,157 +179,7 @@ class workout
 		}
 	}
 
-	renderEffortChart(n)
-	{
-		const {utils} = customJS;
-		const data = n.dv.current()
-		let metadata = app.metadataCache.getFileCache(data.file);
-		// exercise
-		let workoutId = metadata.frontmatter['id'];
-		let allFiles = app.vault.getMarkdownFiles();
 
-		n.dv.header(2, "Effort profile")
-
-		let performedExercises = utils.filterFiles((fm, tags) => { return tags.includes('#exercise') && fm['workout_id'] === workoutId;}, allFiles);
-		performedExercises = utils.addTagsAndFrontmatter(performedExercises);
-
-		// Sort by time performed. Seems this is sometimes needed on iOS, but not on
-		// desktop?
-		performedExercises = performedExercises.sort(function(a,b)
-			{
-			  // Turn your strings into dates, and then subtract them
-			  // to get a value that is either negative, positive, or zero.
-			  return new Date(a.frontmatter['date']) - new Date(b.frontmatter['date']);
-			});
-
-		const datum = performedExercises.map( (e) => { return moment(new Date(e.frontmatter['date'])); });
-		const efforts = performedExercises.map( (e) =>{ return e.frontmatter['effort']; });
-
-		const datasets = {
-		  labels: datum,
-		  datasets: [
-		    {
-		      label: 'Effort',
-		      data: efforts,
-		      borderColor: [ 'rgb(232, 15, 136)' ],
-		      //backgroundColor: Utils.transparentize(Utils.CHART_COLORS.blue, 0.5),
-		      borderWidth: 3,
-		      xAxisID: 'x',
-		      yAxisID: 'y1',
-		    }
-		  ]
-		};
-
-		console.log('4')
-
-		let scales =
-		{
-			 x: {
-					type: 'time',
-					time: {
-						unit: 'minute',
-						displayFormats: {
-							minute: 'HH:mm'
-						}
-					}
-		        },
-			y1:
-			{
-				title:
-				{
-					display: true,
-					text: 'Effort'
-				},
-				min: 0,
-				max: 6,
-				ticks:
-				{
-					// Display only if between 1 and 5
-					callback: function(value, index, ticks)
-					{
-						return value > 0 && value < 6 ? value : '';
-					}
-				},
-				type: 'linear',
-				display: true,
-				position: 'right',
-				// grid line settings
-				grid:
-				{
-					drawOnChartArea: false, // only want the grid lines for one axis to show up
-				}
-			}
-		};
-
-
-		console.log('2')
-
-		const chartData =
-		{
-			type: 'line',
-			data: datasets,
-			options:
-			{
-			    responsive: true,
-			    interaction: {
-			      mode: 'index',
-			      intersect: false,
-			    },
-			    stacked: false,
-			    layout: {
-				    padding: -5
-				},
-				plugins:
-				{
-					yScaleText:
-					{
-						fontSize: 20,
-						fontColor: 'rgba (255, 26, 104, 1)',
-						title: 'test'
-					}
-				},
-				scales: scales,
-				plugins:
-				{
-					tooltip:
-					{
-					    callbacks:
-					    {
-					        title: function(context)
-					        {
-						        return 'Exercice:';
-					        },
-					        label: function(context)
-					        {
-						        let e = performedExercises[context.dataIndex];
-						        return ' ' + e.frontmatter['exercise'];
-					        },
-							afterLabel: function(context)
-							{
-								let e = performedExercises[context.dataIndex];
-								return ' Effort: ' + e.frontmatter['effort'];
-							}
-					    }
-				    }
-				}
-		    }
-		}
-
-		console.log('1')
-
-		window.renderChart(chartData, n.container);
-
-		function findPrevExercise(exercise)
-		{
-			let exercises = n.dv.pages('#exercise').sort(e=> e['date'], 'desc');
-			for(let e of exercises)
-			{
-				if(new Date(e['date']) < new Date(exercise['date']))
-					return e;
-			}
-		}
-
-	}
 
 	fixExerciseName(e)
 	{

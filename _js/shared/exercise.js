@@ -1,4 +1,3 @@
-
 class exercise
 {
 	renderDescription(n)
@@ -9,10 +8,10 @@ class exercise
 		let workout_id = metadata.frontmatter['workout_id'];
 
 		let weight = metadata.frontmatter['weight'];
-		let effort = metadata.frontmatter['effort'];
+		let reps = metadata.frontmatter['reps'];
 		let note = metadata.frontmatter['note'];
 
-		if((weight != null || effort != null) && workout_id != null)
+		if((weight != null || reps != null) && workout_id != null)
 		{
 			n.dv.header(2, "Exercise log:")
 			if(weight != null)
@@ -22,10 +21,10 @@ class exercise
 				n.dv.el("br", "");
 			}
 
-			if(effort != null)
+			if(reps != null)
 			{
-				n.dv.el('b', 'Effort: ');
-				n.dv.span(effort.toString());
+				n.dv.el('b', 'Reps: ');
+				n.dv.span(reps.toString());
 				n.dv.el("br", "");
 			}
 
@@ -43,12 +42,9 @@ class exercise
 			n.dv.paragraph(instructions)
 		}
 
-		let video_url = metadata.frontmatter['video_url'];
-		if(video_url != null)
-			n.dv.el('p', '<iframe title="' + metadata.frontmatter['exercise'] + '" src="' + video_url + '" height="113" width="200" allowfullscreen="" allow="fullscreen" style="aspect-ratio: 1.76991 / 1; width: 100%; height: 100%;"></iframe>')
 	}
 
-	renderEffortWeightChart(n)
+	renderRepsWeightChart(n)
 	{
 		const data = n.dv.current()
 		let metadata = app.metadataCache.getFileCache(n.dv.current().file);
@@ -80,7 +76,7 @@ class exercise
 		const datum = performedExercises.map(e=> moment(new Date(e['date'])).format('YYYY-MM-DD'));
 
 		const weights = performedExercises.map(e=> e['weight']);
-		const efforts = performedExercises.map(e=> e['effort']);
+		const reps = performedExercises.map(e=> e['reps']);
 
 		let weight_ds = {
 		      label: 'Weight',
@@ -95,8 +91,8 @@ class exercise
 		  labels: datum,
 		  datasets: [
 		    {
-		      label: 'Effort',
-		      data: efforts,
+		      label: 'Reps',
+		      data: reps,
 		      borderColor: [ 'rgb(232, 15, 136)' ],
 		      //backgroundColor: Utils.transparentize(Utils.CHART_COLORS.blue, 0.5),
 		      borderWidth: 3,
@@ -149,16 +145,15 @@ class exercise
 				title:
 				{
 					display: true,
-					text: 'Effort'
+					text: 'Reps'
 				},
 				min: 0,
-				max: 6,
 				ticks:
 				{
-					// Include a dollar sign in the ticks
+					// Include a label on the ticks
 					callback: function(value, index, ticks)
 					{
-						return value > 0 && value < 6 ? value : '';
+						return value;
 					}
 				},
 				type: 'linear',
@@ -244,8 +239,8 @@ class exercise
 			// Weight
 			if(hasWeights)
 				exercise.push(e["weight"] + ' kg');
-			// Effort
-			exercise.push(e['effort']);
+			// Reps
+			exercise.push(e['reps']);
 			// Note
 			exercise.push(e['note']);
 			lastExercises.push(exercise);
@@ -258,7 +253,7 @@ class exercise
 		columns.push("⏱");
 		if(hasWeights)
 			columns.push("🏋🏼",);
-		columns.push("😥");
+		columns.push("📊");
 		columns.push("🗒");
 
 		n.dv.table(columns, lastExercises);
@@ -269,5 +264,4 @@ class exercise
 	{
 		return e.replace(' - ', ' ').toLowerCase();
 	}
-
 }

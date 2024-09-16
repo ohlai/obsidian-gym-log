@@ -8,23 +8,15 @@
         "type": "tabs",
         "children": [
           {
-            "id": "40e625f2fde5a347",
+            "id": "fa1be134994f5eb8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Workout list.md",
+                "file": "Gym Dashboard.md",
                 "mode": "preview",
                 "source": true
               }
-            }
-          },
-          {
-            "id": "4f0088373c42ea18",
-            "type": "leaf",
-            "state": {
-              "type": "empty",
-              "state": {}
             }
           }
         ]
@@ -72,6 +64,14 @@
                 "sortOrder": "alphabetical"
               }
             }
+          },
+          {
+            "id": "e86c78580066e81a",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
           }
         ],
         "currentTab": 2
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Workout list.md",
+                "file": "Gym Dashboard.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,7 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Workout list.md",
+                "file": "Gym Dashboard.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -134,16 +134,16 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Workout list.md"
+                "file": "Gym Dashboard.md"
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 273.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -152,20 +152,46 @@
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
-      "command-palette:Open command palette": false
+      "command-palette:Open command palette": false,
+      "media-extended:Open media": false
     }
   },
-  "active": "40e625f2fde5a347",
+  "active": "fa1be134994f5eb8",
   "lastOpenFiles": [
+    "Workouts/2024-09-16 - UL Mid 24 - Lower 1/UL Mid 24 - Lower 1.md.md",
     "README.md",
-    "Workout list.md",
-    "Workouts/2023-01-16 - Pass 2-1 Abs-Back-Biceps-Triceps/Pass 2-1 Abs-Back-Biceps-Triceps.md",
-    "Templates/exercises/Lats/Lats - Chins.md",
-    "Templates/exercises/Biceps/Biceps - Hammercurl.md",
-    "Templates/Workouts/gym/Pass 2-1 Abs-Back-Biceps-Triceps.md",
-    "Workouts/2023-01-16 - Pass 2-1 Mage-Rygg-Biceps-Triceps/Pass 2-1 Mage-Rygg-Biceps-Triceps.md",
+    "Workouts/2024-09-16 - UL Mid 24 - Upper 1/UL Mid 24 - Upper 1.md.md",
+    "Workouts/2024-09-16 - UL Mid 24 - Upper 1/Log/1.md",
+    "Gym Dashboard.md",
+    "Workouts/2024-09-16 - UL Mid 24 - Upper 1/Log",
+    "Workouts/2024-09-16 - UL Mid 24 - Upper 1",
+    "Templates/Workouts/gym/UL Mid 24 - Lower 1.md",
     "Templates/Custom.md",
     "Templates/Start.md",
-    "Templates/Egen.md"
+    "Workouts/2024-09-16 - UL Mid 24 - Lower 1/Log/7.md",
+    "Workouts/2024-09-16 - UL Mid 24 - Lower 1/Log/6.md",
+    "Workouts/2024-09-16 - UL Mid 24 - Lower 1/Log/5.md",
+    "Workouts/2024-09-16 - UL Mid 24 - Lower 1/Log/4.md",
+    "Workouts/2024-09-16 - UL Mid 24 - Lower 1/Log/3.md",
+    "Workouts/2024-09-16 - UL Mid 24 - Lower 1/Log/2.md",
+    "Workouts/2024-09-16 - UL Mid 24 - Lower 1/Log/1.md",
+    "Workouts/2024-09-16 - UL Mid 24 - Lower 1/Log",
+    "Workouts/2024-09-16 - UL Mid 24 - Lower 1",
+    "Templates/exercises/Triceps/Triceps extension.md",
+    "Templates/exercises/Shoulders/Lateral raise.md",
+    "Templates/exercises/Shoulders/External shoulder rotations.md",
+    "Templates/exercises/Quads/V squat.md",
+    "Templates/exercises/Quads/Hip flexors.md",
+    "Templates/exercises/Quads/Heel elevated deep squat.md",
+    "Templates/exercises/Quads/ATG split squat.md",
+    "Templates/exercises/Hamstrings/Seated hamstring curl.md",
+    "Templates/exercises/Hamstrings/Lying hamstring curl.md",
+    "Templates/exercises/Chest/Incline dumbbell bench.md",
+    "Workouts/2024-09-16 - Workout Upper 1/Log",
+    "Workouts/2024-09-16 - Workout Upper 1",
+    "Templates/exercises/other",
+    "Templates/exercises/Calves",
+    "Templates/exercises/Glutes",
+    "Templates/exercises/Hamstrings"
   ]
 }

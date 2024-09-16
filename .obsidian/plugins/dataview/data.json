@@ -4,7 +4,8 @@
   "taskCompletionUseEmojiShorthand": false,
   "taskCompletionText": "completion",
   "taskCompletionDateFormat": "yyyy-MM-dd",
-  "warnOnEmptyResult": true,
+  "recursiveSubTaskCompletion": false,
+  "warnOnEmptyResult": false,
   "refreshEnabled": true,
   "refreshInterval": 2500,
   "defaultDateFormat": "MMMM dd, yyyy",
@@ -12,11 +13,15 @@
   "maxRecursiveRenderDepth": 4,
   "tableIdColumnName": "Fil",
   "tableGroupColumnName": "Group",
+  "showResultCount": true,
   "allowHtml": true,
   "inlineQueryPrefix": "=",
   "inlineJsQueryPrefix": "$=",
   "inlineQueriesInCodeblocks": true,
+  "enableInlineDataview": true,
   "enableDataviewJs": true,
   "enableInlineDataviewJs": true,
-  "prettyRenderInlineFields": true
+  "prettyRenderInlineFields": true,
+  "prettyRenderInlineFieldsInLivePreview": true,
+  "dataviewJsKeyword": "dataviewjs"
 }

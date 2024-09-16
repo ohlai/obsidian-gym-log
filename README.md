@@ -1,4 +1,11 @@
-# Obsidian Gym Log
+# Fork updates
+- Changed recording effort to reps
+	- removed effort charts in workout
+	- replaced effort charts with rep in each exercise
+- Removed some properties (reflected in workout names)
+	- type 
+	- subtype 
+# Obsidian Gym Log - Original
 A simple gym workout log for [Obsidian](https://obsidian.md/).
 
 To use this you need to edit your own exercises and workouts.
@@ -6,7 +13,7 @@ There is a basic example workout with two exercises included.
 
 There are three different views/pages:
 - Overview / a list of workouts that have been performed. This includes a heatmap.
-- A workout view. Includes a list of remaining and performed exercies. 
+- A workout view. Includes a list of remaining and performed exercises. 
   - Has en effort graph at the bottom
 - An exercise view that shows instructions and the last few times this exercise was performed.
   - Has en effort/weight graph at the bottom
@@ -19,10 +26,10 @@ There are three different views/pages:
 5. Press the "Log" button
 6. Select an exercise from the list that appears.
   - The list includes:
-    - "Start" - Will be the only item to appear in the list when no exercies have been logged. Will log the current time as start of the workout
+    - "Start" - Will be the only item to appear in the list when no exercises have been logged. Will log the current time as start of the workout
     - Remaining exercises (performed ones are filtered out)
     - "Custom" - Log a custom exercise
-    - "Show all exercises" - removes the filter and shows all exercies regardless of if they have been logged during this workout
+    - "Show all exercises" - removes the filter and shows all exercises regardless of if they have been logged during this workout
 
 <img width="704" alt="image" src="https://user-images.githubusercontent.com/1998726/212776351-fd77ebb8-7c00-413f-b4c1-eb435db52e57.png">
 
@@ -57,8 +64,7 @@ The following amazing plugins are used:
 4. Configure the macros by pressing "Configure"
 5. Select a "User Script" corresponding to the macro you are configuring
 <img width="184" alt="image" src="https://user-images.githubusercontent.com/1998726/212767899-0a338728-4d6e-4efb-ab02-0e663bcc42c9.png">
-6. Press "Add"
-Make sure you do this for both macros you created in #3
+6. Press "Add". Make sure you do this for both macros you created in #3 
 7. Back out to QuickAdd settings
 8. Add two new "choices" of "Macro" type.
 <img width="376" alt="image" src="https://user-images.githubusercontent.com/1998726/212768331-86bb9ef7-5049-4f1b-aba4-a69f2917bc47.png">

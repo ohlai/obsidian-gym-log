@@ -13,8 +13,8 @@ let workouts = []
 
 dv.header(3, "Total number of workouts: " + pages.length.toString());
 
-dv.table(["Last workouts", "Date", "Workout type"], pages.slice(0,5)
-	.map(e=> [e.file.link, moment(e['date']).format('YYYY-MM-DD'), e['workout']]))
+dv.table(["Last workouts", "Date"], pages.slice(0,5)
+	.map(e=> [e.file.link, moment(e['date']).format('YYYY-MM-DD')]))
 
 ```
 
